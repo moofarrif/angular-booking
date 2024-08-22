@@ -14,7 +14,8 @@ import {
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly baseUrl: string = environment.BASE_URL;
+  //private readonly baseUrl: string = environment.BASE_URL;
+  private readonly baseUrl: string = 'https://back-booking-production.up.railway.app';
   private http = inject(HttpClient);
 
   private _currentUser = signal<User | null>(null);
