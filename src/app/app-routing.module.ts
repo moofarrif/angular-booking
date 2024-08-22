@@ -6,17 +6,21 @@ const routes: Routes = [
   {
     path: 'auth',
     canActivate: [isNotAuthenticatedGuard],
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    loadComponent: () => import('./auth/pages/login-page/login-page.component').then((m) => m.LoginPageComponent),
   },
   {
-    path: 'dashboard',
-    canActivate: [isAuthenticatedGuard],
-    loadChildren: () =>
-      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+    path: 'search',
+    loadComponent: () => import('./searcher/layout/searcher/searcher.component').then((m) => m.SearcherComponent),
+    children:[
+      {
+        path: 'result',
+        loadComponent: () => import('./searcher/components/results/results.component').then((m) => m.ResultsComponent),
+      }
+    ]
   },
   {
     path: '**',
-    redirectTo: 'auth',
+    redirectTo: 'search',
   },
 ];
 
