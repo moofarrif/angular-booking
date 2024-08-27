@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Product } from './domain/product';
-import { ProductService } from './service/productservice';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 
@@ -13,14 +11,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
 })
-export class TableComponent implements OnInit {
-  products!: Product[];
-
-  constructor(private productService: ProductService) {}
-
-  ngOnInit() {
-    this.productService.getProductsMini().then((data) => {
-      this.products = data;
-    });
-  }
+export class TableComponent  {
+  @Input({ required: true }) data!: Product[];
 }

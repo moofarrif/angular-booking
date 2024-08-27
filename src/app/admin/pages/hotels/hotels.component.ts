@@ -1,16 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { TableComponent } from '../../components/table/table.component';
+import { HotelsService } from '../../services/hotels.service';
 
 @Component({
   standalone: true,
+  imports: [TableComponent],
   selector: 'app-hotels',
   templateUrl: './hotels.component.html',
-  styleUrls: ['./hotels.component.css']
+  providers: [HotelsService],
+
+  styleUrls: ['./hotels.component.css'],
 })
 export class HotelsComponent implements OnInit {
+  hotelsSerivces = inject(HotelsService);
 
-  constructor() { }
+  data: any;
 
   ngOnInit() {
+    this.hotelsSerivces.getProductsMini().then((data) => {
+      this.data = data;
+    });
   }
-
 }

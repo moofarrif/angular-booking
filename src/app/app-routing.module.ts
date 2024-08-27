@@ -18,6 +18,13 @@ export const routes: Routes = [
       import('./admin/admin.component').then((m) => m.AdminComponent),
     children: [
       {
+        path: '',
+        loadComponent: () =>
+          import('./admin/components/welcome/welcome.component').then(
+            (m) => m.WelcomeComponent
+          ),
+      },
+      {
         path: 'hotels',
         loadComponent: () =>
           import('./admin/pages/hotels/hotels.component').then(
@@ -31,6 +38,11 @@ export const routes: Routes = [
             (m) => m.BookingsComponent
           ),
       },
+      {
+        path: '',
+        redirectTo: 'bookings',
+        pathMatch: 'full',
+      }
     ],
   },
   {
@@ -52,6 +64,7 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: 'search',
+    pathMatch: 'full',
   },
 ];
 
