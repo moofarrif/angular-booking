@@ -9,6 +9,11 @@ const routes: Routes = [
     loadComponent: () => import('./auth/pages/login-page/login-page.component').then((m) => m.LoginPageComponent),
   },
   {
+    path: 'dashboard',
+    canActivate: [isAuthenticatedGuard],
+    loadComponent: () => import('./admin/admin.component').then((m) => m.AdminComponent),
+  },
+  {
     path: 'search',
     loadComponent: () => import('./searcher/layout/searcher/searcher.component').then((m) => m.SearcherComponent),
     children:[
