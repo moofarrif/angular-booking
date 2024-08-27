@@ -13,6 +13,7 @@ export class AppComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 
+  
   public finishedAuthCheck = computed<boolean>(() => {
     if (this.authService.authStatus() === AuthStatus.checking) {
       return false;
