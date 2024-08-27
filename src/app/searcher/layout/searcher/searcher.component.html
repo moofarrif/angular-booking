@@ -1,11 +1,28 @@
-
-<h1>Busca tu mejor hotel</h1>
-<button routerLink="/auth">Login</button>
-
-<hr>
-<p>searcher works!</p>
-<button routerLink="/search/result">Buscar</button>
-<!-- <button routerLink="/search/result">Registrarse</button> -->
-
-
-<router-outlet></router-outlet>
+<div class="container">
+  <header class="header-container">
+    <h1 class="header-title">Busca tu mejor hotel</h1>
+    <p-button label="Login" routerLink="/auth" />
+  </header>
+  <section class="content">
+    <div class="searcher-container">
+      <p-calendar [showIcon]="true" placeholder="Fecha de entrada" />
+      <p-calendar [showIcon]="true" placeholder="Fecha de salida" />
+      <p-inputNumber
+        [showButtons]="true"
+        buttonLayout="horizontal"
+        spinnerMode="horizontal"
+        [step]="1"
+        [min]="1"
+        [max]="5"
+        placeholder="Numero de personas"
+      />
+      <p-dropdown
+        [options]="cities"
+        optionLabel="name"
+        placeholder="Select a City"
+      />
+      <p-button label="Buscar" routerLink="/search/result" />
+    </div>
+  </section>
+  <router-outlet></router-outlet>
+</div>
