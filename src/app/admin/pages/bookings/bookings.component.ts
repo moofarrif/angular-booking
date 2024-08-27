@@ -1,17 +1,23 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { TableComponent } from '../../components/table/table.component';
-import { ProductService } from '../../components/table/service/productservice';
+import { BookingsService } from '../../services/bookings.service';
 
 @Component({
   standalone: true,
   selector: 'app-bookings',
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.css'],
-  providers: [ProductService],
+  providers: [BookingsService],
   imports: [TableComponent],
 })
 export class BookingsComponent implements OnInit {
-  constructor() {}
+  bookinsService = inject(BookingsService);
 
-  ngOnInit() {}
+  data: any;
+
+  ngOnInit() {
+    this.bookinsService.getProductsMini().then((data) => {
+      this.data = data;
+    });
+  }
 }

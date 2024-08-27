@@ -1,22 +1,22 @@
 <div class="card">
   <p-table 
-      [value]="products" 
+      [value]="data" 
       styleClass="p-datatable-striped" 
       [tableStyle]="{'min-width': '50rem'}">
           <ng-template pTemplate="header">
               <tr>
+                  <th>Codigo</th>
                   <th>Nombre</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Quantity</th>
+                  <th>Categoria</th>
+                  <th>Cantidad</th>
               </tr>
           </ng-template>
-          <ng-template pTemplate="body" let-product>
+          <ng-template pTemplate="body" let-data>
               <tr>
-                  <td>{{product.code}}</td>
-                  <td>{{product.name}}</td>
-                  <td>{{product.category}}</td>
-                  <td>{{product.quantity}}</td>
+                  <td>{{data.code}}</td>
+                  <td>{{data.name}}</td>
+                  <td>{{data.category}}</td>
+                  <td>{{data.quantity}}</td>
               </tr>
           </ng-template>
   </p-table>

@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MenuModule } from 'primeng/menu';
 import { MenuItem } from 'primeng/api';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -12,6 +13,8 @@ import { MenuItem } from 'primeng/api';
 })
 export class SideMenuComponent {
   router = inject(Router);
+
+  authService =inject (AuthService)
 
   items: MenuItem[] | undefined;
 
@@ -37,10 +40,7 @@ export class SideMenuComponent {
           {
             label: 'Cerrar sesión',
             icon: 'pi pi-sign-out',
-            command: () => {
-              localStorage.removeItem('token'),
-                this.router.navigateByUrl('/auth/login');
-            },
+            command: () => this.authService.logout()
           },
         ],
       },
